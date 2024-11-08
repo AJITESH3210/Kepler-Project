@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kepler Exoplanet Database</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Kepler Exoplanet Database</h1>
+        <nav>
+            <a href="{{ url_for('search') }}">Search Database</a>
+            <a href="{{ url_for('analysis') }}">Data Analysis</a>
+        </nav>
+    </div>
+</body>
+</html>

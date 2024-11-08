@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kepler Data Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Kepler Data Analysis</h1>
+        
+        <div class="stats">
+            <h2>Database Statistics</h2>
+            {% for key, value in stats.items() %}
+            <p>{{ key }}: {{ value }}</p>
+            {% endfor %}
+        </div>
+
+        <div class="graph">
+            <h2>Exoplanet Disposition vs Insolation</h2>
+            <img src="data:image/png;base64,{{ plot_url }}" alt="Exoplanet Graph">
+        </div>
+    </div>
+</body>
+</html>
