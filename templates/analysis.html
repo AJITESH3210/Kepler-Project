@@ -7,19 +7,74 @@
 </head>
 <body>
     <div class="container">
+        <!-- Navigation Bar -->
+        <nav>
+            <ul>
+                <li><a href="index">Home</a></li>
+                <li><a href="search">Search</a></li>
+            </ul>
+        </nav>
+
         <h1>Kepler Data Analysis</h1>
         
         <div class="stats">
             <h2>Database Statistics</h2>
-            {% for key, value in stats.items() %}
-            <p>{{ key }}: {{ value }}</p>
-            {% endfor %}
+            {% if stats %}
+                {% for key, value in stats.items() %}
+                    <p>{{ key }}: {{ value }}</p>
+                {% endfor %}
+            {% else %}
+                <p>No statistics available.</p>
+            {% endif %}
+        </div>
+
+        <div class="graph-controls">
+            <h2>Select Graph Parameters</h2>
+            <form action="{{ url_for('analysis') }}" method="POST">
+                <label for="x-axis">Select X-axis:</label>
+                <select id="x-axis" name="x_axis">
+                    <option value="koi_score">Koi Score</option>
+                    <option value="koi_duration">Koi Duration</option>
+                    <option value="koi_depth">Koi Depth</option>
+                    <option value="koi_prad">Koi Planet Radius</option>
+                    <option value="koi_steff">Koi Stellar Effective Temperature</option>
+                    <option value="koi_slogg">Koi Stellar Log Surface Gravity</option>
+                    <option value="koi_srad">Koi Stellar Radius</option>
+                </select>
+
+                <label for="y-axis">Select Y-axis:</label>
+                <select id="y-axis" name="y_axis">
+                    <option value="koi_score">Koi Score</option>
+                    <option value="koi_duration">Koi Duration</option>
+                    <option value="koi_depth">Koi Depth</option>
+                    <option value="k oi_prad">Koi Planet Radius</option>
+                    <option value="koi_steff">Koi Stellar Effective Temperature</option>
+                    <option value="koi_slogg">Koi Stellar Log Surface Gravity</option>
+                    <option value="koi_srad">Koi Stellar Radius</option>
+                </select>
+
+                <label for="graph-type">Select Graph Type:</label>
+                <select id="graph-type" name="graph_type">
+                    <option value="scatter">Scatter Plot</option>
+                    <option value="line">Line Graph</option>
+                    <option value="bar">Bar Chart</option>
+                </select>
+
+                <button type="submit">Plot Graph</button>
+            </form>
         </div>
 
         <div class="graph">
-            <h2>Exoplanet Disposition vs Insolation</h2>
-            <img src="data:image/png;base64,{{ plot_url }}" alt="Exoplanet Graph">
+            <h2>{{ request.form.get('x_axis') }} vs {{ request.form.get('y_axis') }}</h2>
+            {% if plot_url %}
+                <img src="data:image/png;base64,{{ plot_url }}" alt="Exoplanet Graph">
+            {% else %}
+                <p>No graph available. Please select parameters and submit.</p>
+            {% endif %}
         </div>
+
+        <!-- Back to Home button -->
+        <button onclick="window.location.href='index.html'">Back to Home</button>
     </div>
 </body>
 </html>
