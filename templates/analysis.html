@@ -3,20 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Kepler Data Analysis</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
+        <h1>KEPLER DATA ANAYLSIS AND PLOTTING</h1>
         <!-- Navigation Bar -->
         <nav>
             <ul>
-                <li><a href="index">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="search">Search</a></li>
             </ul>
         </nav>
-
-        <h1>Kepler Data Analysis</h1>
-        
         <div class="stats">
             <h2>Database Statistics</h2>
             {% if stats %}
@@ -24,13 +22,18 @@
                     <p>{{ key }}: {{ value }}</p>
                 {% endfor %}
             {% else %}
-                <p>No statistics available.</p>
+                <p>Latest statistics will be updated soon...</p>
             {% endif %}
         </div>
-
+        <div>
+            <h2>Importance of Graphs in Analyzing Kepler Data: </h2>
+            <p>Graphs are used to interpret Kepler data by visually representing relationships between different variables, such as plotting stellar characteristics against the properties of exoplanets. Scatter plots can illustrate correlations, such as the relationship between a star's brightness and the size of its orbiting planets, while line graphs can depict trends over time, such as the discovery rate of exoplanets. Bar charts can summarize categorical data, such as the distribution of confirmed versus candidate planets, allowing for quick comparisons. Additionally, histograms can reveal the frequency distribution of various characteristics, such as stellar radii or planet sizes, aiding in the identification of common traits within the dataset. By employing these graphical methods, researchers can derive meaningful insights and facilitate a deeper understanding of the underlying astronomical phenomena.</p>
+        </div>
         <div class="graph-controls">
             <h2>Select Graph Parameters</h2>
-            <form action="{{ url_for('analysis') }}" method="POST">
+            <p>Choose the parameters accordingly to plot the graph.</p>
+            <br>
+            <form method="POST">
                 <label for="x-axis">Select X-axis:</label>
                 <select id="x-axis" name="x_axis">
                     <option value="koi_score">Koi Score</option>
@@ -41,7 +44,7 @@
                     <option value="koi_slogg">Koi Stellar Log Surface Gravity</option>
                     <option value="koi_srad">Koi Stellar Radius</option>
                 </select>
-
+        
                 <label for="y-axis">Select Y-axis:</label>
                 <select id="y-axis" name="y_axis">
                     <option value="koi_score">Koi Score</option>
@@ -52,29 +55,31 @@
                     <option value="koi_slogg">Koi Stellar Log Surface Gravity</option>
                     <option value="koi_srad">Koi Stellar Radius</option>
                 </select>
-
-                <label for="graph-type">Select Graph Type:</label>
-                <select id="graph-type" name="graph_type">
-                    <option value="scatter">Scatter Plot</option>
-                    <option value="line">Line Graph</option>
-                    <option value="bar">Bar Chart</option>
-                </select>
-
-                <button type="submit">Plot Graph</button>
+                <div>
+                    <br>
+                    <label for="graph-type">Select Graph Type:</label>
+                    <select id="graph-type" name="graph_type">
+                        <option value="scatter">Scatter Plot</option>
+                        <option value="line">Line Graph</option>
+                        <option value="bar">Bar Chart</option>
+                    </select>
+                </div>
+                <br>
+                <div>
+                    <button type="submit">Plot Graph</button>
+                </div>
+                
             </form>
         </div>
 
         <div class="graph">
-            <h2>{{ request.form.get('x_axis') }} vs {{ request.form.get('y_axis') }}</h2>
+            <h3>Your Required Graph: </h3>
             {% if plot_url %}
                 <img src="data:image/png;base64,{{ plot_url }}" alt="Exoplanet Graph">
             {% else %}
-                <p>No graph available. Please select parameters and submit.</p>
+                <p>No graph available. Please select correct parameters.</p>
             {% endif %}
         </div>
-
-        <!-- Back to Home button -->
-        <button onclick="window.location.href='index.html'">Back to Home</button>
     </div>
 </body>
 </html>

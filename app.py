@@ -77,8 +77,7 @@ def analysis():
             'Average Stellar Radius': df['koi_srad'].mean()
         }
         
-        return render_template('analysis.html', 
-                               plot_url=plot_url, 
+        return render_template('analysis.html', plot_url=plot_url, 
                                stats=stats)
     
     # If GET request, show basic analysis

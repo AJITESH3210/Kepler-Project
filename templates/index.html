@@ -3,15 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <title>Kepler Exoplanet Database</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
         <h1>Kepler Exoplanet Database</h1>
         <nav>
-            <a href="{{ url_for('search') }}">Search Database</a>
-            <a href="{{ url_for('analysis') }}">Data Analysis</a>
+            <ul>
+                <li><a href="search">Search</a></li>
+                <li><a href="analysis">Analysis</a></li>
+            </ul>
         </nav>
+
+        <h2>Kepler Mission</h2>
+        <p>
+            The Kepler Mission, a NASA Discovery mission launched on March 6, 2009, was the first space mission dedicated to the search for Earth-sized and smaller planets in the habitable zone of other stars in our neighborhood of the galaxy. Kepler was a special-purpose spacecraft that precisely measured the light variations from thousands of distant stars, looking for planetary transits. When a planet passes in front of its parent star, as seen from our solar system, it blocks a small fraction of the light from that star; this is known as a transit. Searching for transits of distant Earths is like looking for the drop in brightness when a moth flies across a searchlight. Measuring repeated transits, all with a regular period, duration and change in brightness, provides a method for discovering planets and measuring the duration of their orbits—planets the size of Earth and smaller in the habitable zone around other stars similar to our Sun. Kepler continuously monitored over 100,000 stars similar to our Sun for brightness changes produced by planetary transits.
+        </p>
+        <br>
+        <div style="text-align: center;">
+            <img src="static/main.jpg" height="384" width="480" alt="Image of Kepler Satellite">
+        </div>        
+        <br>
+        <h2>Parameters Explained</h2>
+        <div class="parameter">
+            <h3>1. rowid</h3>
+            <p>The unique identifier for each row in the dataset. This is primarily used for internal reference.</p>
+        </div>
+
+        <div class="parameter">
+            <h3>2. kepid</h3>
+            <p>The Kepler ID is a unique identifier assigned to each star observed by the Kepler spacecraft. This ID is crucial for referencing the star in various databases.</p>
+        </div>
+
+        <div class="parameter">
+            <h3>3. kepoi_name</h3>
+            <p>The Kepler Object of Interest (KOI) name, which is used to identify potential exoplanets discovered by Kepler. Each KOI is assigned a unique name for tracking.</p>
+        </div>
+
+        <div class="parameter">
+            <h3>4. kepler_name</h3>
+            <p>This is the name given to the confirmed exoplanet, if applicable. It may be different from the KOI name.</p>
+        </div>
+
+        <div class="parameter">
+            <h3>5. koi_disposition</h3>
+            <p>This indicates the status of the KOI, which can be "CONFIRMED", "CANDIDATE", or "FALSE POSITIVE". It helps in understanding the reliability of the exoplanet discovery.</p>
+        </div>
+
+        <div class="parameter">
+            <h3>6. koi_pdisposition</h3>
+            <p>This is the disposition of the planet, indicating whether it is a confirmed planet or a candidate. It provides further classification of the KOI status.</p>
+        </div>
+
+        <div class="parameter">
+            <h3>7. koi_score</h3>
+            <p>The KOI score is a metric used to evaluate the likelihood of a KOI being a true exoplanet. Higher scores indicate a greater probability of being a confirmed planet.</p>
+        </div>
+
+        <div class="parameter">
+            <h3>8. koi_duration</h3>
+            <p>This represents the duration of the transit of the exoplanet across its star, measured in days. It is important for understanding the size and orbital characteristics of the planet.</p>
+        </div>
+
+        <div class="parameter">
+            <h3>9. koi_depth</h3>
+            <p>The depth of the transit, measured in parts per million (ppm). This value gives an indication of the size of the planet relative to its star.</p>
+        </div>
+
+        <div class="parameter">
+            <h3>10. koi_prad</h3>
+            <p>The radius of the planet measured in Earth radii (R<sub>⊕</sub>). This helps in comparing the size of the exoplanet to that of Earth.</p>
+        </div>
+
+        <div class="parameter">
+            <h3>11. koi _tce_plnt_num</h3>
+            <p>This indicates the number of planets in the system that are associated with the TCE (Threshold Crossing Event). It shows how many potential planets are detected around a single star.</p>
+        </div>
+
+        <div class="parameter">
+            <h3>12. koi_steff</h3>
+            <p>The effective temperature of the star, measured in Kelvin (K). This is important for understanding the star's characteristics and its potential to host habitable planets.</p>
+        </div>
+
+        <div class="parameter">
+            <h3>13. koi_slogg</h3>
+            <p>The log surface gravity of the star, which provides insights into the star's mass and density. It is used to infer the star's evolutionary state and its potential influence on the planets orbiting it.</p>
+        </div>
+
+        <div class="parameter">
+            <h3>14. koi_srad</h3>
+            <p>The radius of the star measured in solar radii (R<sub>☉</sub>). This parameter helps in comparing the size of the star to our Sun, which is essential for understanding the star's luminosity and potential habitability of its planets.</p>
+        </div>
     </div>
 </body>
 </html>

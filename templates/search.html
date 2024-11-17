@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Search Kepler Database</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
     <div class="container">
         <!-- Navigation Bar -->
         <nav>
             <ul>
-                <li><a href=" ">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="analysis">Analysis</a></li>
             </ul>
         </nav>
@@ -29,30 +30,29 @@
 
         {% if results %}
         <h2>Search Results:</h2>
-        <table>
-            <thead>
-                <tr>
-                    {% for column in columns %}
-                    <th>{{ column }}</th>
+        <div class="table-scroll"> <!-- Added scrollable container -->
+            <table>
+                <thead>
+                    <tr>
+                        {% for column in columns %}
+                        <th>{{ column }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for result in results %}
+                    <tr>
+                        {% for column in columns %}
+                        <td>{{ result[column] }}</td>
+                        {% endfor %}
+                    </tr>
                     {% endfor %}
-                </tr>
-            </thead>
-            <tbody>
-                {% for result in results %}
-                <tr>
-                    {% for column in columns %}
-                    <td>{{ result[column] }}</td>
-                    {% endfor %}
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div> <!-- End of scrollable container -->
         {% else %}
             <p>No results found. Please try a different search term.</p>
         {% endif %}
-
-        <!-- Back to Home button -->
-        <button onclick="window.location.href='index.html'">Back to Home</button>
     </div>
 </body>
 </html>

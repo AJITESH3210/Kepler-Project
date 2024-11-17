@@ -1,41 +1,146 @@
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+/* Reset some default styles */
+body, h1, h2, p {
     margin: 0;
     padding: 0;
+}
+
+/* Basic styles for the body */
+body {
+    font-family: Arial, sans-serif;
     background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    font-size: 18px; /* Increase base font size */
 }
 
+/* Container for the main content */
 .container {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
-    padding: 20px;
+    width: 90%; /* Increased width */
+    max-width: 1000px; /* Increased max width */
+    margin: 20px auto;
+    padding: 30px; /* Increased padding */
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Navigation bar styles */
 nav {
-    background-color: #333;
-    color: white;
-    padding: 10px;
+    background: #333;
+    color: #fff;
+    padding: 10px 0;
+    border-radius: 5px;
 }
 
-nav a {
-    color: white;
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 20px; /* Increased margin */
+}
+
+nav ul li a {
+    color: #fff;
     text-decoration: none;
-    margin-right: 10px;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Heading styles */
+h1 {
+    text-align: center;
+    color: #4CAF50;
+    margin-bottom: 20px;
+    font-size: 2.5em; /* Increased heading size */
+}
+
+h2 {
+    margin-top: 20px;
+    color: #333;
+    font-size: 1.8em; /* Increased subheading size */
+}
+
+/* Form styles */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Increased gap */
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+select, input[type="text"], button {
+    padding: 12px; /* Increased padding */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+select:focus, input[type="text"]:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Button styles */
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0. 3s ease;
+    padding: 12px; /* Increased button padding */
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Table styles */
+.table-scroll {
+    overflow-x: auto; /* Enables horizontal scrolling */
+    width: 100%; /* Makes the scrollable area take the full width */
+    margin-top: 20px; /* Optional: Space above the table */
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
+    width: 100%; /* Ensure the table takes the full width of the container */
+    border-collapse: collapse; /* Optional: Ensures borders are collapsed */
 }
 
-table, th, td {
+table th, table td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 10px; /* Increased cell padding */
+    text-align: left;
 }
 
-.graph img {
-    max-width: 100%;
-    height: auto;
+table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tr:hover {
+    background-color: #ddd;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+    }
+
+    .container {
+        width: 95%;
+    }
 }
